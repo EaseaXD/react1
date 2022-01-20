@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+body{
+  background-color: rgb(192, 192, 192)
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-wrapper{
+  display: grid;
+  grid-template-areas: 
+  "h h"
+  "n c";
+  grid-template:  60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+  max-width: 1280px ;
+  margin: 0 auto;
+  
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  grid-area: h;
+  background-color: #18ccce;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  border: 1px solid #000
   }
-  to {
-    transform: rotate(360deg);
+  .btn{
+    margin-right: 2%;
+    padding: 8px 16px;
+    border: 1px solid #011e1f;
+    border-radius: 4px;
+    background-color: #E0FFFF;
+    transition: 0.4s;
   }
-}
+  .btn:hover{
+    background-color: #24849c;
+  }
+  .btn a{
+    font-size:  18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000
+    
+  
+  }
+  .header .header-img{
+    width: 80px;
+    margin-left: 1%;
+  }
+.nav{
+  grid-area: n;
+  background-color: #18ccce;
+  border: 1px solid #000;
+  position: relative;
+  height: 700px;
+  }
+.app-wrapper-content{
+  grid-area: c;
+  position: relative;
+
+  }
+  .content .content-header{
+    display: block;
+    height: 500px;
+  }
+  .content .content-img{
+    width: 100%;
+    height: 100%;
+  }
+  .post{
+    margin: 0 12px;
+  }
+  .post .post__img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    }
+  .post .post__inpute{
+    width: 98%;
+    height: 70px;
+    margin: 16px 0;
+    font-size: 20px;
+    outline: none;
+    border-radius: 8px;
+    padding: 0 16px;
+  }
+  .btn_post{
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+  }
+  .post .post__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    margin: 32px 0;
+    padding: 8px;
+    border-radius: 8px;
+    width: 100%;
+  }
