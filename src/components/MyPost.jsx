@@ -1,6 +1,11 @@
 import Post from './Post'
-const MyPost = () =>{
+const MyPost = (props) =>{
+
+
+  let postElements =props.postData.map((post) => <Post message={post.message} likesCount={post.likesCount}/>)
     return(
+      
+        
         <div className="post">
           <h2 className='post__title'>My post</h2>
 
@@ -9,8 +14,7 @@ const MyPost = () =>{
             <button className='btn btn_post'>Отправить</button>
           </div>
           <div className="post__content">
-            <Post message="Hi. How are you" likecount="23" />
-            <Post message="I am fine" likecount="0" />
+            {postElements}
           </div>
         </div>
       
