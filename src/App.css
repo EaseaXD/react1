@@ -91,7 +91,7 @@ input:focus, textarea:focus, select:focus {
     height: 75px;
     border-radius: 50%;
     }
-  .post .post__inpute{
+  .post .post__textarea{
     width: 98%;
     height: 80px;
     margin: 16px 0;
