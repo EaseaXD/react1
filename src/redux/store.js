@@ -1,4 +1,9 @@
-let store = {
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import siderbarReducer from "./sidebar-reducer";
+
+
+export let store = {
   _state : {
     profilePage:{
     postData: [
@@ -6,7 +11,8 @@ let store = {
       {id: 2, message: "Vanya" ,likesCount: 2}, 
       {id: 3, message: "Vanyadsd" ,likesCount: 4},
       ],
-      newPostText: 'it-react',
+      newPostText: '',
+      
     
   },
   dialogsPage: {
@@ -25,35 +31,36 @@ let store = {
       {id: 4, message: "Vitalik"}, 
       {id: 5, message: "Sasha"},
       {id: 6, message: "Sanek"}
-    ]
-  }},
-  getState(){
+    ],
+    newMessageText: '',
+  },
+  sidebar: {},
+},
+  getState(){ 
     return this._state;
+  },
+  subscribe (observer) {
+    this._rerenderEntireThee = observer;
   },
   rerenderEntireThee () {
     console.log("vitka");
   },
-   addPost () {
-    let newPost = {
-      id: 5 ,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0,
-    }
-    this._state.profilePage.postData.push(newPost);
-    this._rerenderEntireThee(this._state);
-  },
-  updateNewPostChangeText  (newText) {
+
+   
+  dispatch(action){
+
+    this._state.profilePage = profileReducer(this._state.profilePage , action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage , action);
+    this._state.sidebar = siderbarReducer(this._state.sidebar , action);
     
-    this._state.profilePage.newPostText = newText;
     this._rerenderEntireThee(this._state);
-  },
-  subscribe (observer) {
-    this._rerenderEntireThee = observer;
-  }
+
+},
+
+
 }
 
 
 
 
-  export default store;
-  window.state = store ;
+  

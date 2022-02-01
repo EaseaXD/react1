@@ -4,7 +4,7 @@ import 'normalize.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'; 
-import store from './redux/state';
+import store from './redux/redux-store';
 
 
 
@@ -12,11 +12,14 @@ import store from './redux/state';
 let rerenderEntireThee = (state) =>{
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={store.addPost.bind(store)} updateNewPostChangeText={store.updateNewPostChangeText.bind(store)} />
+            <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
         </React.StrictMode>, document.getElementById('root'));
 }
 rerenderEntireThee(store.getState());
-store.subscribe(rerenderEntireThee);
+store.subscribe(() =>{
+    let state = store.getState()
+    rerenderEntireThee(state);
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

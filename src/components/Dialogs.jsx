@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-
-
+import React from "react";
+import { addMessageActionCreator ,changeMessageActionCreator} from "../redux/dialogs-reducer";
 
 
 const Meassage = (props) =>{
@@ -19,10 +19,22 @@ const DialogItem = (props) => {
 
 
 const Dialogs = (props) => {
-let DialogsElements = props.state.dialogsPost.map((dialog)=> <DialogItem name={dialog.name} id={dialog.id} />);
+let state = props.store.getState().dialogsPage;
+let DialogsElements = state.dialogsPost.map((dialog)=> <DialogItem name={dialog.name} id={dialog.id} />);
 
-let MessageElements =props.state.dialogsMessage.map(mess => <Meassage message={mess.message} />);
+let MessageElements =state.dialogsMessage.map(mess => <Meassage message={mess.message} />);
 
+let newMessageElement = React.createRef();
+
+let onMessageChange = () => {
+  let message = newMessageElement.current.value;
+  props.dispatch(changeMessageActionCreator(message));
+}
+
+let addMessage = () =>{
+  props.dispatch(addMessageActionCreator());
+  
+}
 return (
     <div className="dialogs">
       <div className="dialogs__items">
@@ -32,8 +44,9 @@ return (
       <div className="dialogs__messages">
           {MessageElements}
          <div className="dialogs__messagesContent">
-            <input className="dialogs__input" type="text" />
-            <button className="btn btn_message">Отправить</button>
+          
+            <textarea onChange={onMessageChange}  ref={newMessageElement}   className="dialogs__input" type="text" />
+            <button onClick={addMessage} className="btn btn_message">Отправить</button>
         </div>
       </div>
     </div>

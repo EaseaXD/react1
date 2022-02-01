@@ -162,6 +162,7 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 1px 1px 7px 1px rgba(34, 60, 80, 0.2);
     border-radius: 6px;
     position: relative;
+    word-break: break-all
     
 
   }
@@ -178,6 +179,7 @@ input:focus, textarea:focus, select:focus {
     margin: 0 auto;
     width: 90%;
     height: 50%;
+    word-break: break-all
     
 
   }
